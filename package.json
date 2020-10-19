@@ -1,0 +1,41 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "A web application to display recipes and create a shopping list",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madhur-08/forkify.git"
+  },
+  "keywords": [
+    "forkify",
+    "recipe",
+    "shopping",
+    "list"
+  ],
+  "author": "Madhur Agrawal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/madhur-08/forkify/issues"
+  },
+  "homepage": "https://github.com/madhur-08/forkify#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "babel-polyfill": "^6.26.0",
+    "live-server": "^1.2.1"
+  }
+}
