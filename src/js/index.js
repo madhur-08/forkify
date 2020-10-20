@@ -16,8 +16,6 @@ import Likes from './models/Likes';
  * - Liked recipes
  */
 const state = {};
-window.state = state;
-
 /**
  * SEARCH CONTROLLER
  */
