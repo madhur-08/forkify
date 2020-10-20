@@ -53,12 +53,6 @@ elements.searchForm.addEventListener('submit', e=>{
     controlSearch();
 });
 
-//TESTING
-elements.searchForm.addEventListener('load', e=>{
-    e.preventDefault();
-    controlSearch();
-});
-
 elements.searchResPages.addEventListener('click', e => {
    const btn = e.target.closest('.btn-inline');
    if(btn) {
@@ -83,7 +77,7 @@ elements.searchResPages.addEventListener('click', e => {
         renderLoader(elements.recipe);
 
         //Highlight selected search item
-        searchView.highlightSelected(id);
+        if(state.search) searchView.highlightSelected(id);
 
         //Create new Recipe object
         state.recipe = new Recipe(id);
@@ -107,7 +101,7 @@ elements.searchResPages.addEventListener('click', e => {
 //  window.addEventListener('hashchange', controlRecipe);
 //  window.addEventListener('load', controlRecipe);
 
-['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+['hashchange','load' ].forEach(event => window.addEventListener(event, controlRecipe));
 
 
 /** 
@@ -147,8 +141,8 @@ elements.shopping.addEventListener('click', e=> {
 /**
  * LIKES CONTROLLER
  */
-state.likes = new Likes();
-likesView.toggleLikeMenu(state.likes.getNumLikes());
+// state.likes = new Likes();
+// likesView.toggleLikeMenu(state.likes.getNumLikes());
 const controlLike = () => {
      if(!state.likes) state.likes = new Likes();
     const currentID = state.recipe.id;
@@ -178,6 +172,18 @@ const controlLike = () => {
     } 
     likesView.toggleLikeMenu(state.likes.getNumLikes());
 }
+
+//Restore liked recipes on page load
+window.addEventListener('load',() => {
+    state.likes = new Likes();
+    //Restore likes
+    state.likes.readStorage();
+    //Toggle like menu button
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
+
+    //Render the existing likes
+    state.likes.likes.forEach(like => likesView.renderLikes(like));
+});
 
 //handling recipe button clicks
 elements.recipe.addEventListener('click', e => {
