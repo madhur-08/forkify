@@ -116,7 +116,7 @@ elements.recipe.addEventListener('click', e => {
     }
     else if(e.target.matches('.btn-increase, .btn-increase *')) {
         //Increase button is clicked
-        state.recipe.updateServings('inc');
+        state.recipe.updateServings('inc'); 
         recipeView.updateServingsIngredients(state.recipe);
 
     }
